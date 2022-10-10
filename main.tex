@@ -33,6 +33,8 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
+
+
 \documentclass[
 	11pt, % Default font size, select one of 10pt, 11pt or 12pt
 	fleqn, % Left align equations
@@ -63,6 +65,8 @@
 
 \begin{document}
 
+\usetikzlibrary{patterns} % Pour l oiseau
+
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -73,7 +77,7 @@
 		\centering\sffamily % Font styling
 		{\Huge\bfseries Cours de conception préliminaire pour BTS CPRP\\ Sciences industrielles de l'ingénieur\par} % Book title
 		\vspace{16pt} % Vertical whitespace
-		{\LARGE Guide pratique\par} % Subtitle
+		{\LARGE Guide pratique + exercices d'entraînements\par} % Subtitle
 		\vspace{24pt} % Vertical whitespace
 		{\huge\bfseries \par} % Author name
 	}
@@ -230,66 +234,7 @@ This statement requires citation \cite{Smith:2022jd}; this one is more specific 
 
 This is a URL link: \href{https://www.latextemplates.com}{LaTeX Templates}. This is an email link: \href{mailto:example@example.com}{example@example.com}. This is a monospaced URL link: \url{https://www.LaTeXTemplates.com}.
 
-%------------------------------------------------
-
-\section{Lists}\index{Lists}
-
-Lists are useful to present information in a concise and/or ordered way.
-
-\subsection{Numbered List}\index{Lists!Numbered List}
-
-\begin{enumerate}
-	\item First numbered item
-	\begin{enumerate}
-		\item First indented numbered item
-		\item Second indented numbered item
-		\begin{enumerate}
-			\item First second-level indented numbered item
-		\end{enumerate}
-	\end{enumerate}
-	\item Second numbered item
-	\item Third numbered item
-\end{enumerate}
-
-\subsection{Bullet Point List}\index{Lists!Bullet Points}
-
-\begin{itemize}
-	\item First bullet point item
-	\begin{itemize}
-		\item First indented bullet point item
-		\item Second indented bullet point item
-		\begin{itemize}
-			\item First second-level indented bullet point item
-		\end{itemize}
-	\end{itemize}
-	\item Second bullet point item
-	\item Third bullet point item
-\end{itemize}
-
-\subsection{Descriptions and Definitions}\index{Lists!Descriptions and Definitions}
-
-\begin{description}
-	\item[Name] Description
-	\item[Word] Definition
-	\item[Comment] Elaboration
-\end{description}
-
-%------------------------------------------------
-
-\section{International Support}
-
-àáâäãåèéêëìíîïòóôöõøùúûüÿýñçčšž
-
-\noindent ÀÁÂÄÃÅÈÉÊËÌÍÎÏÒÓÔÖÕØÙÚÛÜŸÝÑ
-
-\noindent ßÇŒÆČŠŽ
-
-%------------------------------------------------
-
-\section{Ligatures}
-
-fi fj fl ffl ffi Ty
-
+%-----
 %----------------------------------------------------------------------------------------
 %	PART
 %----------------------------------------------------------------------------------------
@@ -297,7 +242,7 @@ fi fj fl ffl ffi Ty
 \part{Pourquoi ça casse ?}
 
 %----------------------------------------------------------------------------------------
-%	MATHEMATICS EXAMPLES CHAPTER
+%	 CHAPTER
 %----------------------------------------------------------------------------------------
 
 \chapter{Dessiner des mécanismes}
@@ -449,11 +394,11 @@ En colonne : Coordonnées de l'objet = $ \left\{ \begin{array}{c}
      3 \\
      8 \\
      5
-\end{array} \right\} _{\vec{x}, \vec{y}, \vec{z}}$
+\end{array} \right\} _{(\vec{x}, \vec{y}, \vec{z})}$
 \end{center}
 
 \begin{remark}
-    En fait, mathématiquement, pour calculer la longueur entre l'objet et les axes, on multiplie la longueur x (ici 3, 8 et 5) par le \textbf{vecteur unitaire} de l'axe. Pour être rigoureux, nous devrions dire ¨3 fois le vecteur unitaire de l'axe $\vec{x}$ ¨. Nous multiplions une longueur par une autre longueur, car le vecteur unitaire peut être 1. Si on parle en mètre, on aura 3 fois 1 mètre, ce qui donne 3 mètre. Comme ça, si on veut convertir le tout en feet (les unités de longueurs américaines), nous n'aurons pas à effectuer les conversion à chaque fois !
+    En fait, mathématiquement, pour calculer la longueur entre l'objet et les axes, on multiplie la longueur x (ici 3, 8 et 5) par le \textbf{vecteur unitaire} de l'axe. Pour être rigoureux, nous devrions dire ¨3 fois le vecteur unitaire de l'axe $\vec{x}$ ¨. Nous multiplions une longueur par une autre longueur, car le vecteur unitaire est très souvent 1 ; si on parle en mètre, on aura "3 fois 1 mètre", ce qui donne 3 mètre. Comme ça, si on veut convertir le tout en feet (les unités de longueurs américaines), nous n'aurons pas à effectuer les conversion à chaque fois ! 
 \end{remark}
 
 
@@ -517,7 +462,234 @@ En colonne : Coordonnées de l'objet = $ \left\{ \begin{array}{c}
 \end{tikzpicture}
 
 
-\subsection{Several equations}\index{Theorems!Several Equations}
+\subsection{Points ou vecteurs ?}\index{Theorems!Several Equations}
+Vous savez maintenant, en fonction des informations que l'on vous donne, inscrire différents points sur un repère, ou écrire les coordonnées mathématiques en fonctions des axes ! Maintenant nous allons voir comment calculer la distance entre deux objets. Si vous savez le faire pour un axe, vous saurez le faire pour autant d'axes que vous le voulez (pour $n$ axes donc). Sur la figure ci-dessous, que vous comptiez les barres de A à B ou que vous utilisez les math, vous retomberez sur la distance entre A et B = 7 sur l'axe $\vec{x}$.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+    
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,205); %set diagram left start at 0, and has height of 205
+
+%Straight Lines [id:da890440256027542] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ][line width=0.75]    (60.67,100.67) -- (209,100.67) (70.67,96.67) -- (70.67,104.67)(80.67,96.67) -- (80.67,104.67)(90.67,96.67) -- (90.67,104.67)(100.67,96.67) -- (100.67,104.67)(110.67,96.67) -- (110.67,104.67)(120.67,96.67) -- (120.67,104.67)(130.67,96.67) -- (130.67,104.67)(140.67,96.67) -- (140.67,104.67)(150.67,96.67) -- (150.67,104.67)(160.67,96.67) -- (160.67,104.67)(170.67,96.67) -- (170.67,104.67)(180.67,96.67) -- (180.67,104.67)(190.67,96.67) -- (190.67,104.67)(200.67,96.67) -- (200.67,104.67) ;
+%Straight Lines [id:da15310507354039582] 
+\draw [line width=1.5]    (101,78.67) -- (101,120.47) ;
+%Straight Lines [id:da23478389785629838] 
+\draw [line width=1.5]    (171,78.67) -- (171,120.47) ;
+%Curve Lines [id:da2707834196380996] 
+\draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (101,59.5) .. controls (140.2,30.1) and (203.89,29.8) .. (239.36,58.51) ;
+\draw [shift={(241.5,60.3)}, rotate = 221.07] [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (10.72,-5.15) -- (0,0) -- (10.72,5.15) -- (7.12,0) -- cycle    ;
+%Curve Lines [id:da5480311593783525] 
+\draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (171,58) .. controls (188.64,49.48) and (216.84,53.15) .. (236.79,87.65) ;
+\draw [shift={(238,89.8)}, rotate = 241.28] [fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (10.72,-5.15) -- (0,0) -- (10.72,5.15) -- (7.12,0) -- cycle    ;
+%Straight Lines [id:da2248262885123402] 
+\draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (100,150.5) -- (167.5,150.5) (110,146.5) -- (110,154.5)(120,146.5) -- (120,154.5)(130,146.5) -- (130,154.5)(140,146.5) -- (140,154.5)(150,146.5) -- (150,154.5)(160,146.5) -- (160,154.5) ;
+\draw [shift={(170.5,150.5)}, rotate = 180] [fill={rgb, 255:red, 65; green, 117; blue, 5 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Curve Lines [id:da40272634555595666] 
+\draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (146.6,164.03) .. controls (199.35,191.14) and (353.59,162.64) .. (382.5,130.3) ;
+\draw [shift={(143.5,162.3)}, rotate = 31.22] [fill={rgb, 255:red, 65; green, 117; blue, 5 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+
+% Text Node
+\draw (95.33,61) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ] [align=left] {A};
+% Text Node
+\draw (165.33,61.33) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,opacity=1 ] [align=left] {B};
+% Text Node
+\draw (66.17,127.67) node [anchor=north west][inner sep=0.75pt]   [align=left] {0};
+% Text Node
+\draw (96,127.67) node [anchor=north west][inner sep=0.75pt]   [align=left] {3};
+% Text Node
+\draw (161,128.33) node [anchor=north west][inner sep=0.75pt]   [align=left] {10};
+% Text Node
+\draw (240,60.9) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ]  {$A=3\textcolor[rgb]{0.61,0.61,0.61}{\vec{\textcolor[rgb]{0.61,0.61,0.61}{x}}}$};
+% Text Node
+\draw (211.5,89.9) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,opacity=1 ]  {$\vec{x}$};
+% Text Node
+\draw (240,93.9) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,opacity=1 ]  {$B=10\vec{\textcolor[rgb]{0.61,0.61,0.61}{x}}$};
+% Text Node
+\draw (328.5,31.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {Distance entre A et B};
+% Text Node
+\draw (350.5,63.9) node [anchor=north west][inner sep=0.75pt]    {$ \begin{array}{l}
+=\textcolor[rgb]{0.96,0.65,0.14}{B}\textcolor[rgb]{0.61,0.61,0.61}{\vec{x}} \ -\ \textcolor[rgb]{0.29,0.56,0.89}{A}\vec{\textcolor[rgb]{0.61,0.61,0.61}{x}}\\
+=\ \textcolor[rgb]{0.96,0.65,0.14}{10}\textcolor[rgb]{0.61,0.61,0.61}{\vec{x}} -\textcolor[rgb]{0.29,0.56,0.89}{3}\textcolor[rgb]{0.61,0.61,0.61}{\vec{x}}\\
+=\textcolor[rgb]{0.25,0.46,0.02}{\ 7}\vec{\textcolor[rgb]{0.61,0.61,0.61}{x}}
+\end{array}$};
+
+
+\end{tikzpicture}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}[Vecteur] 
+
+La flèche qui définit la translation s’appelle un vecteur. Un vecteur est toujours défini selon :
+\begin{itemize}
+    \item une direction;
+    \item un sens;
+    \item une longueur.
+\end{itemize}
+\end{definition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+
+
+% Pattern Info
+ 
+\tikzset{
+pattern size/.store in=\mcSize, 
+pattern size = 5pt,
+pattern thickness/.store in=\mcThickness, 
+pattern thickness = 0.3pt,
+pattern radius/.store in=\mcRadius, 
+pattern radius = 1pt}\makeatletter
+\pgfutil@ifundefined{pgf@pattern@name@_vhmuqiq0y}{
+\pgfdeclarepatternformonly[\mcThickness,\mcSize]{_vhmuqiq0y}
+{\pgfqpoint{-\mcThickness}{-\mcThickness}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{\pgfsetcolor{\tikz@pattern@color}
+\pgfsetlinewidth{\mcThickness}
+\pgfpathmoveto{\pgfpointorigin}
+\pgfpathlineto{\pgfpoint{\mcSize}{0}}
+\pgfpathmoveto{\pgfpointorigin}
+\pgfpathlineto{\pgfpoint{0}{\mcSize}}
+\pgfusepath{stroke}}}
+\makeatother
+
+% Pattern Info
+ 
+\tikzset{
+pattern size/.store in=\mcSize, 
+pattern size = 5pt,
+pattern thickness/.store in=\mcThickness, 
+pattern thickness = 0.3pt,
+pattern radius/.store in=\mcRadius, 
+pattern radius = 1pt}\makeatletter
+\pgfutil@ifundefined{pgf@pattern@name@_bq4rjrxbm}{
+\pgfdeclarepatternformonly[\mcThickness,\mcSize]{_bq4rjrxbm}
+{\pgfqpoint{-\mcThickness}{-\mcThickness}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{\pgfsetcolor{\tikz@pattern@color}
+\pgfsetlinewidth{\mcThickness}
+\pgfpathmoveto{\pgfpointorigin}
+\pgfpathlineto{\pgfpoint{\mcSize}{0}}
+\pgfpathmoveto{\pgfpointorigin}
+\pgfpathlineto{\pgfpoint{0}{\mcSize}}
+\pgfusepath{stroke}}}
+\makeatother
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,180); %set diagram left start at 0, and has height of 180
+
+%Shape: Axis 2D [id:dp8125208566355717] 
+\draw  (40.33,150.47) -- (188,150.47)(40.33,22.33) -- (40.33,150.47) -- cycle (181,145.47) -- (188,150.47) -- (181,155.47) (35.33,29.33) -- (40.33,22.33) -- (45.33,29.33)  ;
+\draw   (73.67,80.5) -- (86.67,80.5)(80.17,74) -- (80.17,87) ;
+\draw   (133.55,48.48) -- (146.11,51.85)(141.52,43.89) -- (138.15,56.45) ;
+%Straight Lines [id:da8305182893844034] 
+\draw    (40.33,150.47) -- (141.83,150.47) (50.33,146.47) -- (50.33,154.47)(60.33,146.47) -- (60.33,154.47)(70.33,146.47) -- (70.33,154.47)(80.33,146.47) -- (80.33,154.47)(90.33,146.47) -- (90.33,154.47)(100.33,146.47) -- (100.33,154.47)(110.33,146.47) -- (110.33,154.47)(120.33,146.47) -- (120.33,154.47)(130.33,146.47) -- (130.33,154.47)(140.33,146.47) -- (140.33,154.47) ;
+%Straight Lines [id:da02005146352091991] 
+\draw    (40.33,40.47) -- (40.33,150.47) (44.33,50.47) -- (36.33,50.47)(44.33,60.47) -- (36.33,60.47)(44.33,70.47) -- (36.33,70.47)(44.33,80.47) -- (36.33,80.47)(44.33,90.47) -- (36.33,90.47)(44.33,100.47) -- (36.33,100.47)(44.33,110.47) -- (36.33,110.47)(44.33,120.47) -- (36.33,120.47)(44.33,130.47) -- (36.33,130.47)(44.33,140.47) -- (36.33,140.47) ;
+%Straight Lines [id:da39215195335574426] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (80.33,80.67) -- (80.33,149.8) ;
+%Straight Lines [id:da604926218972468] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (80.33,80.67) -- (40.17,80.14) ;
+%Straight Lines [id:da1283029307081649] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (139.83,50.14) -- (139.83,149.14) ;
+%Straight Lines [id:da46802740225772044] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (139.83,50.14) -- (40.83,50.14) ;
+%Shape: Axis 2D [id:dp8556413066077728] 
+\draw  (235.33,151.47) -- (383,151.47)(235.33,23.33) -- (235.33,151.47) -- cycle (376,146.47) -- (383,151.47) -- (376,156.47) (230.33,30.33) -- (235.33,23.33) -- (240.33,30.33)  ;
+%Straight Lines [id:da4682622745285643] 
+\draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][pattern=_vhmuqiq0y,pattern size=6pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 0; green, 0; blue, 0}]   (275.33,81.67) -- (332.16,52.51) ;
+\draw [shift={(334.83,51.14)}, rotate = 152.84] [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+\draw   (268.67,81.5) -- (281.67,81.5)(275.17,75) -- (275.17,88) ;
+\draw   (328.55,49.48) -- (341.11,52.85)(336.52,44.89) -- (333.15,57.45) ;
+%Straight Lines [id:da9690774952490337] 
+\draw    (235.33,151.47) -- (336.83,151.47) (245.33,147.47) -- (245.33,155.47)(255.33,147.47) -- (255.33,155.47)(265.33,147.47) -- (265.33,155.47)(275.33,147.47) -- (275.33,155.47)(285.33,147.47) -- (285.33,155.47)(295.33,147.47) -- (295.33,155.47)(305.33,147.47) -- (305.33,155.47)(315.33,147.47) -- (315.33,155.47)(325.33,147.47) -- (325.33,155.47)(335.33,147.47) -- (335.33,155.47) ;
+%Straight Lines [id:da5950909085105862] 
+\draw    (235.33,41.47) -- (235.33,151.47) (239.33,51.47) -- (231.33,51.47)(239.33,61.47) -- (231.33,61.47)(239.33,71.47) -- (231.33,71.47)(239.33,81.47) -- (231.33,81.47)(239.33,91.47) -- (231.33,91.47)(239.33,101.47) -- (231.33,101.47)(239.33,111.47) -- (231.33,111.47)(239.33,121.47) -- (231.33,121.47)(239.33,131.47) -- (231.33,131.47)(239.33,141.47) -- (231.33,141.47) ;
+%Straight Lines [id:da2241030154336161] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (275.33,81.67) -- (275.33,150.8) ;
+%Straight Lines [id:da07713278509545707] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (275.33,81.67) -- (235.17,81.14) ;
+%Straight Lines [id:da34164267665954884] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (334.83,51.14) -- (334.83,150.14) ;
+%Straight Lines [id:da8954540053223827] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (334.83,51.14) -- (235.83,51.14) ;
+%Shape: Axis 2D [id:dp009535405752006731] 
+\draw  (444.33,151.47) -- (592,151.47)(444.33,23.33) -- (444.33,151.47) -- cycle (585,146.47) -- (592,151.47) -- (585,156.47) (439.33,30.33) -- (444.33,23.33) -- (449.33,30.33)  ;
+%Image [id:dp6706960820491168] 
+\draw (483.6,73.4) node  {\includegraphics[width=31.9pt,height=31.9pt]{animal.png}};
+%Straight Lines [id:da055256921753091603] 
+\draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][pattern=_bq4rjrxbm,pattern size=6pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 0; green, 0; blue, 0}]   (484.33,81.67) -- (541.16,52.51) ;
+\draw [shift={(543.83,51.14)}, rotate = 152.84] [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+\draw   (477.67,81.5) -- (490.67,81.5)(484.17,75) -- (484.17,88) ;
+\draw   (537.55,49.48) -- (550.11,52.85)(545.52,44.89) -- (542.15,57.45) ;
+%Straight Lines [id:da7660403840954855] 
+\draw    (444.33,151.47) -- (545.83,151.47) (454.33,147.47) -- (454.33,155.47)(464.33,147.47) -- (464.33,155.47)(474.33,147.47) -- (474.33,155.47)(484.33,147.47) -- (484.33,155.47)(494.33,147.47) -- (494.33,155.47)(504.33,147.47) -- (504.33,155.47)(514.33,147.47) -- (514.33,155.47)(524.33,147.47) -- (524.33,155.47)(534.33,147.47) -- (534.33,155.47)(544.33,147.47) -- (544.33,155.47) ;
+%Straight Lines [id:da9462133559553068] 
+\draw    (444.33,41.47) -- (444.33,151.47) (448.33,51.47) -- (440.33,51.47)(448.33,61.47) -- (440.33,61.47)(448.33,71.47) -- (440.33,71.47)(448.33,81.47) -- (440.33,81.47)(448.33,91.47) -- (440.33,91.47)(448.33,101.47) -- (440.33,101.47)(448.33,111.47) -- (440.33,111.47)(448.33,121.47) -- (440.33,121.47)(448.33,131.47) -- (440.33,131.47)(448.33,141.47) -- (440.33,141.47) ;
+%Straight Lines [id:da623475273016491] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (484.33,81.67) -- (484.33,150.8) ;
+%Straight Lines [id:da6027898751040337] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (484.33,81.67) -- (444.17,81.14) ;
+%Straight Lines [id:da15467967201658595] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (543.83,51.14) -- (543.83,150.14) ;
+%Straight Lines [id:da41400144444714404] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (543.83,51.14) -- (444.83,51.14) ;
+
+% Text Node
+\draw (190.33,135.4) node [anchor=north west][inner sep=0.75pt]    {$\vec{x}$};
+% Text Node
+\draw (24.33,25.4) node [anchor=north west][inner sep=0.75pt]    {$\vec{y}$};
+% Text Node
+\draw (81.33,88.67) node [anchor=north west][inner sep=0.75pt]   [align=left] {G};
+% Text Node
+\draw (126.67,30.33) node [anchor=north west][inner sep=0.75pt]   [align=left] {G'};
+% Text Node
+\draw (385.33,136.4) node [anchor=north west][inner sep=0.75pt]    {$\vec{x}$};
+% Text Node
+\draw (219.33,26.4) node [anchor=north west][inner sep=0.75pt]    {$\vec{y}$};
+% Text Node
+\draw (276.33,89.67) node [anchor=north west][inner sep=0.75pt]   [align=left] {G};
+% Text Node
+\draw (321.67,31.33) node [anchor=north west][inner sep=0.75pt]   [align=left] {G'};
+% Text Node
+\draw (594.33,136.4) node [anchor=north west][inner sep=0.75pt]    {$\vec{x}$};
+% Text Node
+\draw (428.33,26.4) node [anchor=north west][inner sep=0.75pt]    {$\vec{y}$};
+% Text Node
+\draw (485.33,89.67) node [anchor=north west][inner sep=0.75pt]   [align=left] {G};
+% Text Node
+\draw (530.67,31.33) node [anchor=north west][inner sep=0.75pt]   [align=left] {G'};
+% Text Node
+\draw (307.08,69.8) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ]  {$\vec{v}$};
+% Text Node
+\draw (513.08,65.8) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ]  {$\vec{v}$};
+
+
+\end{tikzpicture}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 This is a theorem consisting of several equations.
 
