@@ -77,7 +77,7 @@
 		\centering\sffamily % Font styling
 		{\Huge\bfseries Cours de conception préliminaire pour BTS CPRP\\ Sciences industrielles de l'ingénieur\par} % Book title
 		\vspace{16pt} % Vertical whitespace
-		{\LARGE Guide pratique + exercices d'entraînements\par} % Subtitle
+		{\LARGE Guide VISUEL et pratique + exercices d'entraînements\par} % Subtitle
 		\vspace{24pt} % Vertical whitespace
 		{\huge\bfseries \par} % Author name
 	}
@@ -384,17 +384,22 @@ Pour débuter, il vous faudra comprendre ce qu'est un repère et savoir les util
 Ici l'objet (une boule), à des coordonnées sur chaque axe. Si vous comptez le {\color{blue} nombre de trait} sur les axes, vous obtiendrez ses coordonnées\footnote{Les coordonnées sont les distances qui sépare l'objet de chaque axe, on regarde la distance entre l'objet et l'axe $\vec{x}$, puis la distance entre l'objet et l'axe $\vec{y}$, et enfin sur $\vec{z}$ par exemple.}. On le peut les noter sous en ligne ou en colonne.\\
 
 
-Si on compte les traits (coordonnées) sur chaque axe par rapport à la boule, on a à peu près 3 et quelque sur l'axe $\vec{x}$, puis 5 et quelque sur l'axe $\vec{z}$ et enfin 8 et quelque sur $\vec{y}$. Si on veut noter ces informations en ligne, nous additionnerons les différentes longueurs, en précisant à chaque fois le nom de l'axe. Pour écrire les coordonnées en colonne, vous verrez certainement que le nom des axes n'est pas noté. Mais il convient de le préciser, surtout au début. Dans les deux cas, nous obtiendrons les notations suivantes :
+Si on compte les traits (coordonnées) sur chaque axe par rapport à la boule, on a à peu près 3 et quelque sur l'axe $\vec{x}$, puis 5 et quelque sur l'axe $\vec{z}$ et enfin 8 et quelque sur $\vec{y}$. Si on veut noter ces informations en ligne, nous additionnerons les différentes longueurs, en précisant à chaque fois le nom de l'axe. Pour écrire les coordonnées en colonne, vous verrez certainement parfois, que le nom des axes n'est pas noté. Mais il convient de le préciser, surtout au début. Dans les deux cas, nous obtiendrons les notations suivantes :
 
 \begin{center}
     
 
+
+
 En ligne : Coordonnées de l'objet = $3\vec{x} + 8\vec{y} + 5\vec{z}$ \\
-En colonne : Coordonnées de l'objet = $ \left\{ \begin{array}{c}
-     3 \\
-     8 \\
-     5
-\end{array} \right\} _{(\vec{x}, \vec{y}, \vec{z})}$
+En colonne : Coordonnées de l'objet = {$\begin{pmatrix}
+3\\
+8\\
+5
+\end{pmatrix}_{(\vec{x} ,\vec{y} ,\vec{z})}$}
+
+
+
 \end{center}
 
 \begin{remark}
@@ -463,7 +468,7 @@ En colonne : Coordonnées de l'objet = $ \left\{ \begin{array}{c}
 
 
 \subsection{Points ou vecteurs ?}\index{Theorems!Several Equations}
-Vous savez maintenant, en fonction des informations que l'on vous donne, inscrire différents points sur un repère, ou écrire les coordonnées mathématiques en fonctions des axes ! Maintenant nous allons voir comment calculer la distance entre deux objets. Si vous savez le faire pour un axe, vous saurez le faire pour autant d'axes que vous le voulez (pour $n$ axes donc). Sur la figure ci-dessous, que vous comptiez les barres de A à B ou que vous utilisez les math, vous retomberez sur la distance entre A et B = 7 sur l'axe $\vec{x}$.
+Vous savez maintenant, en fonction des informations que l'on vous donne, inscrire différents points sur un repère, ou écrire les coordonnées mathématiques en fonction des axes ! Maintenant nous allons voir comment calculer la distance entre deux objets. Si vous savez le faire pour un axe, vous saurez le faire pour autant d'axes que vous le voulez (pour $n$ axes donc). Sur la figure ci-dessous, que vous comptiez les barres de A à B ou que vous utilisez les "maths", vous retomberez sur la distance entre A et B = 7 sur l'axe $\vec{x}$.
 
 
 
@@ -530,9 +535,12 @@ Vous savez maintenant, en fonction des informations que l'on vous donne, inscrir
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
+
 \begin{definition}[Vecteur] 
 
-La flèche qui définit la translation s’appelle un vecteur. Un vecteur est toujours défini selon :
+Dans un repère, la flèche qui définit la translation s’appelle un vecteur. Un vecteur est toujours défini selon\footnote{A noter qu'on ne parlera pas encore de point d'application. Que nous mettrons en lien avec les champs de vecteurs, et de la création d'un moment.} :
 \begin{itemize}
     \item une direction;
     \item un sens;
@@ -540,6 +548,9 @@ La flèche qui définit la translation s’appelle un vecteur. Un vecteur est to
 \end{itemize}
 \end{definition}
 
+
+\subsection{A quoi servent les vecteurs ?}
+En science de l'ingénieur, nous étudions des machines, des outils, des voitures et des avions, des machines à café et des ponts, bref des systèmes mécaniques ! Pour se faire une idée sur comment les systèmes bougent, (comment se comportent-ils si on appuie dessus, si on les chauffes ou s'ils sont envoyés dans l'espace) on prend une photo du système (on fait un schéma) et on réfléchis sur ce qu'il va se passer.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -691,7 +702,93 @@ pattern radius = 1pt}\makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-This is a theorem consisting of several equations.
+On prend plusieurs photo de l'envol d'un oiseau. En prenant suffisamment d'images, nous pouvons définir tous les points du trajet de l'oiseau. Vous comprendrez donc, que les vecteurs conviennent très bien pour décrire les objets en mouvements.
+
+
+\subsection{Opérations sur les vecteurs}
+Dans cette section, vous allez comprendre les opérations qu'il est possible d'effectuer sur les vecteurs. Ce qu'on peut faire, et ce que l'on n'a pas le droit de faire.
+\begin{notation}[Somme de vecteurs] % Specify a name/title in square brackets, or leave them out for no title
+
+\begin{center}
+    \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,201); %set diagram left start at 0, and has height of 201
+
+%Shape: Grid [id:dp15047627161440968] 
+\draw  [draw opacity=0][fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (465,41.67) -- (646,41.67) -- (646,162.48) -- (465,162.48) -- cycle ; \draw  [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] (465,41.67) -- (465,162.48)(485,41.67) -- (485,162.48)(505,41.67) -- (505,162.48)(525,41.67) -- (525,162.48)(545,41.67) -- (545,162.48)(565,41.67) -- (565,162.48)(585,41.67) -- (585,162.48)(605,41.67) -- (605,162.48)(625,41.67) -- (625,162.48)(645,41.67) -- (645,162.48) ; \draw  [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] (465,41.67) -- (646,41.67)(465,61.67) -- (646,61.67)(465,81.67) -- (646,81.67)(465,101.67) -- (646,101.67)(465,121.67) -- (646,121.67)(465,141.67) -- (646,141.67)(465,161.67) -- (646,161.67) ; \draw  [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ]  ;
+%Straight Lines [id:da4031145021572542] 
+\draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=1.5]    (263.33,125.33) -- (398,125.8) ;
+\draw [shift={(402,125.81)}, rotate = 180.2] [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (11.61,-5.58) -- (0,0) -- (11.61,5.58) -- cycle    ;
+%Straight Lines [id:da22439954086152092] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=1.5]    (402,125.81) -- (431.56,66.06) ;
+\draw [shift={(433.33,62.48)}, rotate = 116.32] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (11.61,-5.58) -- (0,0) -- (11.61,5.58) -- cycle    ;
+%Straight Lines [id:da946945722451811] 
+\draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ][line width=1.5]    (263.33,125.33) -- (429.58,63.86) ;
+\draw [shift={(433.33,62.48)}, rotate = 159.71] [fill={rgb, 255:red, 65; green, 117; blue, 5 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (11.61,-5.58) -- (0,0) -- (11.61,5.58) -- cycle    ;
+%Straight Lines [id:da447996117481553] 
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=1.5]    (485,80.48) -- (541,80.65) ;
+\draw [shift={(545,80.67)}, rotate = 180.17] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (11.61,-5.58) -- (0,0) -- (11.61,5.58) -- cycle    ;
+\draw [shift={(485,80.48)}, rotate = 180.17] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=1.5]    (0,6.71) -- (0,-6.71)   ;
+%Straight Lines [id:da7945176889866028] 
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=1.5]    (485,101.67) -- (541,101.67) ;
+\draw [shift={(545,101.67)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (11.61,-5.58) -- (0,0) -- (11.61,5.58) -- cycle    ;
+\draw [shift={(485,101.67)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=1.5]    (0,6.71) -- (0,-6.71)   ;
+%Straight Lines [id:da8399969368706015] 
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=1.5]    (545,101.67) -- (601,101.67) ;
+\draw [shift={(605,101.67)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (11.61,-5.58) -- (0,0) -- (11.61,5.58) -- cycle    ;
+\draw [shift={(545,101.67)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=1.5]    (0,6.71) -- (0,-6.71)   ;
+%Straight Lines [id:da2671176789017329] 
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=1.5]    (489,150.5) -- (545,150.67) ;
+\draw [shift={(545,150.67)}, rotate = 180.17] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=1.5]    (0,6.71) -- (0,-6.71)   ;
+\draw [shift={(485,150.48)}, rotate = 0.17] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (11.61,-5.58) -- (0,0) -- (11.61,5.58) -- cycle    ;
+%Straight Lines [id:da15927245311282956] 
+\draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=1.5]    (33.33,66.33) -- (168,66.8) ;
+\draw [shift={(172,66.81)}, rotate = 180.2] [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (11.61,-5.58) -- (0,0) -- (11.61,5.58) -- cycle    ;
+%Straight Lines [id:da23003661515914176] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=1.5]    (109,139.81) -- (138.56,80.06) ;
+\draw [shift={(140.33,76.48)}, rotate = 116.32] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (11.61,-5.58) -- (0,0) -- (11.61,5.58) -- cycle    ;
+%Shape: Axis 2D [id:dp23671064844015177] 
+\draw  (45,128.81) -- (94,128.81)(45,79.81) -- (45,128.81) -- cycle (87,123.81) -- (94,128.81) -- (87,133.81) (40,86.81) -- (45,79.81) -- (50,86.81)  ;
+%Shape: Ellipse [id:dp24619022615926922] 
+\draw   (3,102.24) .. controls (3,67.31) and (48.89,39) .. (105.5,39) .. controls (162.11,39) and (208,67.31) .. (208,102.24) .. controls (208,137.17) and (162.11,165.48) .. (105.5,165.48) .. controls (48.89,165.48) and (3,137.17) .. (3,102.24) -- cycle ;
+%Curve Lines [id:da42068051095049763] 
+\draw    (178.1,42.8) .. controls (178.72,40.28) and (180.11,39.28) .. (182.27,39.8) .. controls (184.77,40.13) and (186.16,39.21) .. (186.44,37.05) .. controls (187.18,34.64) and (188.77,33.69) .. (191.22,34.2) .. controls (193.21,35) and (194.6,34.25) .. (195.4,31.95) .. controls (196.27,29.66) and (197.87,28.89) .. (200.18,29.65) .. controls (202.42,30.5) and (204.01,29.83) .. (204.96,27.64) .. controls (205.98,25.47) and (207.57,24.9) .. (209.72,25.91) .. controls (211.8,26.99) and (213.39,26.5) .. (214.48,24.44) .. controls (215.65,22.4) and (217.23,22) .. (219.22,23.23) .. controls (221.13,24.52) and (222.89,24.17) .. (224.52,22.16) .. controls (225.84,20.26) and (227.4,20.03) .. (229.21,21.46) .. controls (230.94,22.94) and (232.69,22.77) .. (234.46,20.94) .. controls (235.92,19.18) and (237.46,19.1) .. (239.08,20.71) .. controls (241,22.35) and (242.72,22.34) .. (244.24,20.69) .. controls (246.21,19.09) and (247.92,19.17) .. (249.35,20.92) .. controls (251.07,22.73) and (252.75,22.88) .. (254.4,21.37) .. controls (256.48,19.95) and (258.14,20.17) .. (259.39,22.04) .. controls (260.93,23.99) and (262.57,24.28) .. (264.32,22.92) .. controls (266.48,21.67) and (268.27,22.06) .. (269.7,24.1) .. controls (270.71,26.07) and (272.3,26.49) .. (274.47,25.35) .. controls (276.34,24.16) and (277.91,24.62) .. (279.16,26.75) .. controls (280.34,28.89) and (281.87,29.41) .. (283.76,28.3) .. controls (286.02,27.35) and (287.69,27.97) .. (288.77,30.17) -- (289.75,30.56) -- (291.23,31.16)(179.9,45.2) .. controls (180.48,42.71) and (181.84,41.73) .. (183.97,42.27) .. controls (186.44,42.62) and (187.79,41.73) .. (188.04,39.59) .. controls (188.74,37.2) and (190.29,36.28) .. (192.7,36.81) .. controls (194.65,37.63) and (196.01,36.9) .. (196.77,34.62) .. controls (197.6,32.35) and (199.14,31.6) .. (201.41,32.39) .. controls (203.6,33.25) and (205.15,32.6) .. (206.05,30.44) .. controls (207.02,28.29) and (208.57,27.72) .. (210.68,28.75) .. controls (212.71,29.85) and (214.25,29.38) .. (215.29,27.33) .. controls (216.41,25.3) and (217.94,24.91) .. (219.89,26.15) .. controls (221.75,27.46) and (223.47,27.11) .. (225.04,25.12) .. controls (226.31,23.23) and (227.82,23) .. (229.59,24.44) .. controls (231.26,25.93) and (232.96,25.76) .. (234.67,23.94) .. controls (236.09,22.18) and (237.59,22.1) .. (239.16,23.71) .. controls (241.03,25.35) and (242.7,25.34) .. (244.18,23.69) .. controls (246.1,22.09) and (247.76,22.16) .. (249.15,23.91) .. controls (250.82,25.72) and (252.46,25.86) .. (254.07,24.35) .. controls (256.1,22.93) and (257.72,23.15) .. (258.93,25.01) .. controls (260.42,26.95) and (262.02,27.23) .. (263.73,25.86) .. controls (265.85,24.6) and (267.61,24.99) .. (269,27.02) .. controls (269.97,28.98) and (271.52,29.39) .. (273.66,28.24) .. controls (275.5,27.03) and (277.03,27.49) .. (278.25,29.61) .. controls (279.4,31.74) and (280.9,32.25) .. (282.76,31.13) .. controls (284.99,30.16) and (286.62,30.77) .. (287.67,32.96) -- (288.64,33.35) -- (290.09,33.93) ;
+\draw [shift={(298,35.48)}, rotate = 202.83] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Shape: Axis 2D [id:dp5068356858250795] 
+\draw  (251.33,174.67) -- (454,174.67)(251.33,37) -- (251.33,174.67) -- cycle (447,169.67) -- (454,174.67) -- (447,179.67) (246.33,44) -- (251.33,37) -- (256.33,44)  ;
+
+% Text Node
+\draw (321.02,74.25) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,opacity=1 ,rotate=-336.03]  {$\textcolor[rgb]{0.29,0.56,0.89}{\vec{a}} +\textcolor[rgb]{0.82,0.01,0.11}{\vec{b}}$};
+% Text Node
+\draw (325.33,136.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ]  {$\vec{a}$};
+% Text Node
+\draw (425.62,105.16) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ,rotate=-296.73]  {$\vec{b}$};
+% Text Node
+\draw (553,61.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ]  {$\vec{u}$};
+% Text Node
+\draw (609.33,81.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ]  {$2\vec{u}$};
+% Text Node
+\draw (553.67,138.07) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ]  {$-\vec{u}$};
+% Text Node
+\draw (125.62,116.16) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ,rotate=-296.73]  {$\vec{b}$};
+% Text Node
+\draw (61,14) node [anchor=north west][inner sep=0.75pt]   [align=left] {Ingrédients};
+% Text Node
+\draw (20,173) node [anchor=north west][inner sep=0.75pt]   [align=left] {Un repère et des vecteurs};
+% Text Node
+\draw (304,34) node [anchor=north west][inner sep=0.75pt]   [align=left] {On peut faire ça :};
+% Text Node
+\draw (94.33,45.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ]  {$\vec{a}$};
+% Text Node
+\draw (497,167) node [anchor=north west][inner sep=0.75pt]   [align=left] {N'oubliez pas ça !};
+% Text Node
+\draw (577,105.07) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ]  {$=\vec{u} +\vec{u}$};
+
+
+\end{tikzpicture}
+\end{center}
+\end{notation}
 
 \begin{theorem}[Name of the theorem] % Specify a name/title in square brackets, or leave them out for no title
 	In $E=\mathbb{R}^n$ all norms are equivalent. It has the properties:
@@ -882,7 +979,7 @@ Compétitivité des produits industriels
 
 %------------------------------------------------
 
-\chapter{Chapitre}
+\chapter{Éléments de corrections}
 
 \begin{corollary}[S6.1]
 Spécification des produits
