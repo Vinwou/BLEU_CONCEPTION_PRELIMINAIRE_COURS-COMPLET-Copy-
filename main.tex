@@ -132,9 +132,15 @@ Crédit : Template original codé par Vel Gayevskiy (vel@latextemplates.com) et 
 
 %------------------------------------------------
 
-\chapter{Décrypter le dessin de définition}\index{Sectioning}
+\chapter{Besoins, communication et langage}\index{Sectioning}
+\og Dis moi quels sont tes besoins, et je te dirai quel langage utiliser \fg
 \begin{corollary}[S2.4] 
-Représentations graphiques dérivées des maquettes numériques
+Représentations graphiques dérivées des maquettes numériques \\
+\textbf{C2.3} Synthétiser une information \\
+\textbf{C5.3} \& \textbf{C6.1} Formuler, décoder et synthétiser un cahier des charges fonctionnel ou un dossier de conception \\
+Langage de description SysML : \textbf{S1.1.1}
+
+
 \end{corollary}
 
 
@@ -158,6 +164,25 @@ Les normes à connaître :
     \item ISO 9001 : définit les critères applicables à un système de management de la qualité. Il s’agit de la seule norme de la famille ISO 9000 à pouvoir être utilisée pour la certification (mais ce n’est pas une obligation);
     \item AFNOR NF Z 68-020 : Dénomination des axes pour les machines possédant 3 axes orthogonaux.
 \end{itemize}
+
+\section{Le langage SysML}
+Souvent au début des sujets du BTS, le "\textbf{Systems Modeling Language}" est un incontournable de l'examen du brevet CPRP. Il décrit le système que vous allez étudier pendant 6 heures !\\
+En fonction de ce qu'on souhaite décrire, on utilise un ou plusieurs des diagrammes répartis en 3 catégories (figure \ref{Sys1}).
+
+\begin{figure}[H] % Use [H] to suppress floating and place the figure/table exactly where it is specified in the text
+	\centering % Horizontally center the figure on the page
+	\includegraphics[width=1\textwidth]{Images/Sys1.JPG} % Include the figure image
+	\caption{Model SysML}
+	\label{Sys1} % Unique label used for referencing the figure in-text
+\end{figure}
+
+Chacune des trois catégories répond à une question :
+\begin{itemize}
+    \item modélisation fonctionnelle : « que doit faire le système ? »
+    \item modélisation comportementale : « comment le système doit-il se comporter ? »
+    \item modélisation structurelle : « comment le système est-il construit ? ».
+\end{itemize}
+Ces différentes modélisation permettent de situer la \textbf{frontière de l’étude} dans un contexte \textbf{pluri-technologique}. 
 
 \section{Qu'est ce qu'un dessin de définition}\index{Sectioning!Subsections}
 \subsection{Mise en plan d'une pièce}
@@ -250,6 +275,13 @@ This is a URL link: \href{https://www.latextemplates.com}{LaTeX Templates}. This
 Cinématique des liaisons mécaniques
 \end{corollary}
 
+\section{Le langage SysML}
+Le début des exams des BTS
+
+\subsection{Chaîne fonctionnelle}
+Chaine fonctionnelle. On va + traiter la chaine d'énergie (bloc+bloc)
+\subsubsection{Chaîne d'information}
+\subsubsection{Chaîne d'énergie}
 
 
 \section{Paramétrer les mécanismes}\index{Theorems}
@@ -384,7 +416,7 @@ Pour débuter, il vous faudra comprendre ce qu'est un repère et savoir les util
 Ici l'objet (une boule), à des coordonnées sur chaque axe. Si vous comptez le {\color{blue} nombre de trait} sur les axes, vous obtiendrez ses coordonnées\footnote{Les coordonnées sont les distances qui sépare l'objet de chaque axe, on regarde la distance entre l'objet et l'axe $\vec{x}$, puis la distance entre l'objet et l'axe $\vec{y}$, et enfin sur $\vec{z}$ par exemple.}. On le peut les noter sous en ligne ou en colonne.\\
 
 
-Si on compte les traits (coordonnées) sur chaque axe par rapport à la boule, on a à peu près 3 et quelque sur l'axe $\vec{x}$, puis 5 et quelque sur l'axe $\vec{z}$ et enfin 8 et quelque sur $\vec{y}$. Si on veut noter ces informations en ligne, nous additionnerons les différentes longueurs, en précisant à chaque fois le nom de l'axe. Pour écrire les coordonnées en colonne, vous verrez certainement parfois, que le nom des axes n'est pas noté. Mais il convient de le préciser, surtout au début. Dans les deux cas, nous obtiendrons les notations suivantes :
+Si on compte les traits (coordonnées) sur chaque axe par rapport à la boule, on compte environ 3 unités sur l'axe $\vec{x}$, puis environ 5 unités sur l'axe $\vec{z}$ et enfin 8 et quelque sur $\vec{y}$. Si on veut noter ces informations en ligne, nous additionnerons les différentes longueurs, en précisant à chaque fois le nom de l'axe. Pour écrire les coordonnées en colonne, vous verrez certainement parfois, que le nom des axes n'est pas noté. Mais il convient de le préciser, surtout au début. Dans les deux cas, nous obtiendrons les notations suivantes :
 
 \begin{center}
     
@@ -790,15 +822,9 @@ Dans cette section, vous allez comprendre les opérations qu'il est possible d'e
 \end{center}
 \end{notation}
 
-\begin{theorem}[Name of the theorem] % Specify a name/title in square brackets, or leave them out for no title
-	In $E=\mathbb{R}^n$ all norms are equivalent. It has the properties:
-	\begin{align}
-		& \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||\\
-		&  ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-	\end{align}
-\end{theorem}
 
-\subsection{Single Line}\index{Theorems!Single Line}
+
+\subsection{Différence - Vecteur position, vitesse et accélération.}\index{Theorems!Single Line}
 
 This is a theorem consisting of just one line.
 
@@ -809,8 +835,17 @@ This is a theorem consisting of just one line.
 %------------------------------------------------
 
 \section{Élaborer un schéma cinématique}\index{Definitions}
+Il est souvent difficile de s'imaginer quelles sont les actions/ mouvements des différentes pièces dans un système. Il nous serait difficile de faire nos calculs à partir d'une photo d'un système même simple.
 
-A definition can be mathematical or it could define a concept.
+
+\begin{figure}[H] % Use [H] to suppress floating and place the figure/table exactly where it is specified in the text
+	\centering % Horizontally center the figure on the page
+	\includegraphics[width=0.3\textwidth]{Images/B1.jpg} % Include the figure image
+	\caption{Système réel}
+	\label{fig:placeholder} % Unique label used for referencing the figure in-text
+\end{figure}
+
+
 
 \begin{definition}[Definition name] % Specify a name/title in square brackets, or leave them out for no title
 	Given a vector space $E$, a norm on $E$ is an application, denoted $||\cdot||$, $E$ in $\mathbb{R}^+=[0,+\infty[$ such that:
@@ -847,7 +882,7 @@ A definition can be mathematical or it could define a concept.
 
 \section{Statisme d'un système}\index{Remarks}
 
-This is an example of a remark.
+Torseur et loi de composition des mouvements (formule de Bour\footnote{Jacques Edmond Émile Bour est un mécanicien et mathématicien français du XIXe siècle. Il mit au point la formule de Bour. En 1858 il obtient le grand prix de mathématiques de l’Académie des sciences pour son mémoire sur « L’intégration des équations aux dérivées partielles des premier et deuxième degrés ».})
 
 $\{ \mathcal{V} (S/R) \}
 = \left\{ \begin{array}{c}
@@ -860,23 +895,14 @@ $\{ \mathcal{V} (S/R) \}
 \end{array} \right\} _{B/R}$
 
 \begin{remark}
-    On termine ce chapitre en éveillant le lecteur aux qualités respectives de l’isostatisme
-et de l’hyperstatisme :
+    On termine ce chapitre en éveillant le lecteur aux qualités respectives de l’isostatisme et de l’hyperstatisme :
+\begin{itemize}
+    \item pour une fonction mécanique souhaitée, une structure isostatique est plus économique qu'une structure hyperstatique ;
+    \item une structure hyperstatique est plus rigide qu’une structure isostatique.
+\end{itemize}
 
-• pour une fonction mécanique souhaitée, une structure isostatique est plus écono-
-mique qu’une structure hyperstatique ;
-
-• une structure hyperstatique est plus rigide qu’une structure isostatique.
-
-En effet, les contraintes géométriques mises en évidence dans le cas de l’hyperstatis-
-me induisent soit une qualité de fabrication plus grande, soit la mise en place de
-
-réglages sur le mécanisme. On sait tout à fait réaliser et l’un, et l’autre, mais cela a un
-coût. En conclusion, on peut dire que l’hyperstatisme est un choix réfléchi qu’il est
-nécessaire de financer quand les critères de performances ne sont pas atteints avec une
-structure équivalente isostatique.
-Chercher à rendre une structure isostatique est une activité qui sollicite l’imagination
-et que l’on illustre sur un exemple.
+En effet, les contraintes géométriques mises en évidence dans le cas de l’hyperstatisme induisent soit une qualité de fabrication plus grande, soit la mise en place de réglages sur le mécanisme. On sait tout à fait réaliser et l’un, et l’autre, mais cela a un coût. En conclusion, on peut dire que l’hyperstatisme est un choix réfléchi qu’il est nécessaire de financer quand les critères de performances ne sont pas atteints avec une structure équivalente isostatique.
+Chercher à rendre une structure isostatique est une activité qui sollicite l’imagination et que l’on illustre sur un exemple.
 \end{remark}
 
 %------------------------------------------------
@@ -980,6 +1006,24 @@ Compétitivité des produits industriels
 %------------------------------------------------
 
 \chapter{Éléments de corrections}
+
+
+\section{A FAIRE}
+\subsection{S10.3 – Environnement - Fiche début année}
+\subsection{Chaine fonctionnelle : Chaînes d’information et de puissance}
+\subsection{Liaisons mécaniques}
+\subsection{Position, vitesse, acceleration, compositions}
+\subsection{PFD, cas particulier PFS}
+\subsection{S3.6 – Résistance des matériaux}
+\subsection{S3.7 – Mécanique des fluides ($2^{eme}$ année)}
+\subsection{S4. MATÉRIAUX ET TRAITEMENTS}
+\subsection{S4.2 – Domaine d’utilisation des matériaux et leurs traitements}
+\subsection{S5.1 – Construction mécanique et capteurs}
+\subsection{S9. GESTION DE PRODUCTION, QUALITÉ}
+\subsubsection{Classe inversé : jeu de role}
+\begin{verbatim}
+https://www.cipe.fr/jeux/le-jeu-du-kanban/
+\end{verbatim}
 
 \begin{corollary}[S6.1]
 Spécification des produits
